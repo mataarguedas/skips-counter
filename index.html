@@ -2,6 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Restore path from GitHub Pages 404 redirect
+      (function() {
+        var redirect = window.location.search.slice(1);
+        if (redirect.startsWith('p=')) {
+          var path = decodeURIComponent(redirect.slice(2));
+          window.history.replaceState(null, null, path);
+        }
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>skips-counter</title>
