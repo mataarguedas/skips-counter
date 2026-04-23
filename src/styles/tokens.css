@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap');
+
+:root {
+  /* ── Brand Colors ── */
+  --amz-navy:           #131921;   /* primary dark bg (header, footer) */
+  --amz-navy-light:     #232F3E;   /* secondary dark bg (sub-header, nav bar) */
+  --amz-navy-hover:     #37475A;   /* hover state on dark surfaces */
+  --amz-orange:         #FF9900;   /* Amazon logo, accents */
+  --amz-orange-hover:   #FA8900;   /* orange hover state */
+
+  /* ── Button Colors ── */
+  --amz-btn-primary:    #FFD814;   /* "Add to Cart" yellow */
+  --amz-btn-primary-hover: #F7CA00;
+  --amz-btn-primary-border: #FCD200;
+  --amz-btn-buy-now:    #FFA41C;   /* "Buy Now" orange */
+  --amz-btn-buy-now-hover: #FA8900;
+  --amz-btn-secondary:  #FFFFFF;   /* white secondary buttons */
+  --amz-btn-secondary-border: #D5D9D9;
+  --amz-btn-secondary-hover: #F7FAFA;
+
+  /* ── Text Colors ── */
+  --amz-text-primary:   #0F1111;   /* main body text */
+  --amz-text-secondary: #565959;   /* secondary / muted text */
+  --amz-text-tertiary:  #767676;   /* disabled, hint text */
+  --amz-link:           #007185;   /* standard link color */
+  --amz-link-hover:     #C7511F;   /* link hover — warm orange-brown */
+  --amz-price:          #0F1111;   /* regular price text */
+  --amz-deal-red:       #CC0C39;   /* deal / sale badge */
+  --amz-deal-bg:        #CC0C39;
+
+  /* ── Surface Colors ── */
+  --amz-bg-page:        #EAEDED;   /* page background gray */
+  --amz-bg-alt:         #F5F5F5;   /* alternate section background */
+  --amz-bg-card:        #FFFFFF;   /* card / module background */
+  --amz-border:         #D5D9D9;   /* standard border */
+  --amz-border-light:   #E7E7E7;   /* subtle dividers */
+  --amz-divider:        #E7E7E7;
+
+  /* ── Rating & Feedback ── */
+  --amz-star:           #FFA41C;   /* star rating orange */
+  --amz-star-empty:     #E0E0E0;
+
+  /* ── Prime ── */
+  --amz-prime-blue:     #1A98FF;
+
+  /* ── Typography ── */
+  --amz-font-family:    "Noto Sans", Arial, sans-serif;
+  --amz-font-size-xs:   11px;
+  --amz-font-size-sm:   12px;
+  --amz-font-size-base: 14px;
+  --amz-font-size-md:   16px;
+  --amz-font-size-lg:   18px;
+  --amz-font-size-xl:   21px;
+  --amz-font-size-2xl:  24px;
+  --amz-font-size-3xl:  28px;
+  --amz-font-weight-regular: 400;
+  --amz-font-weight-medium:  500;
+  --amz-font-weight-bold:    700;
+
+  /* ── Spacing (4px base) ── */
+  --amz-space-xxs: 2px;
+  --amz-space-xs:  4px;
+  --amz-space-sm:  8px;
+  --amz-space-md:  12px;
+  --amz-space-lg:  16px;
+  --amz-space-xl:  20px;
+  --amz-space-2xl: 24px;
+  --amz-space-3xl: 32px;
+
+  /* ── Border Radius ── */
+  --amz-radius-sm:  4px;   /* buttons, inputs */
+  --amz-radius-md:  8px;   /* cards, modules */
+  --amz-radius-lg:  12px;  /* modal dialogs */
+  --amz-radius-pill: 20px; /* search bar, badges */
+
+  /* ── Shadows ── */
+  --amz-shadow-card:     0 2px 5px 0 rgba(213,217,217,0.5);
+  --amz-shadow-card-hover: 0 4px 12px 0 rgba(0,0,0,0.15);
+  --amz-shadow-dropdown: 0 2px 5px rgba(15,17,17,0.15);
+  --amz-shadow-modal:    0 0 14px 0 rgba(15,17,17,0.5);
+
+  /* ── Layout ── */
+  --amz-max-width:     1500px;
+  --amz-header-height: 60px;
+  --amz-subnav-height: 39px;
+}

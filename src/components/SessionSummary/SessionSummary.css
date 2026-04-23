@@ -1,0 +1,84 @@
+.session-summary {
+  background: var(--amz-bg-card);
+  box-shadow: var(--amz-shadow-card);
+  border-radius: var(--amz-radius-md);
+  padding: var(--amz-space-lg);
+  margin-top: var(--amz-space-md);
+}
+
+.session-summary__heading {
+  margin: 0;
+  font-size: var(--amz-font-size-md);
+  font-weight: var(--amz-font-weight-bold);
+  color: var(--amz-text-primary);
+  font-family: var(--amz-font-family);
+}
+
+.session-summary__divider {
+  border: none;
+  border-top: 1px solid var(--amz-divider);
+  margin: var(--amz-space-md) 0;
+}
+
+/* ── Stats row ── */
+.session-summary__stats {
+  display: flex;
+}
+
+.session-summary__stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.session-summary__stat-value {
+  font-size: var(--amz-font-size-3xl);
+  font-weight: var(--amz-font-weight-bold);
+  color: var(--amz-text-primary);
+  line-height: 1.1;
+  font-family: var(--amz-font-family);
+}
+
+.session-summary__stat-label {
+  font-size: var(--amz-font-size-sm);
+  color: var(--amz-text-secondary);
+  margin-top: var(--amz-space-xs);
+  font-family: var(--amz-font-family);
+}
+
+/* ── Recent-entries log ── */
+.session-summary__log {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.session-summary__log-entry {
+  font-size: var(--amz-font-size-sm);
+  color: var(--amz-text-secondary);
+  font-family: var(--amz-font-family);
+  padding: var(--amz-space-xxs) 0;
+}
+
+.session-summary__log-entry + .session-summary__log-entry {
+  border-top: 1px solid var(--amz-border-light);
+}
+
+.session-summary__overflow {
+  margin: var(--amz-space-sm) 0 0;
+  font-size: var(--amz-font-size-xs);
+  color: var(--amz-text-tertiary);
+  font-family: var(--amz-font-family);
+}
+
+/* ── Empty state ── */
+.session-summary__empty {
+  text-align: center;
+  font-size: 13px;
+  color: var(--amz-text-tertiary);
+  font-family: var(--amz-font-family);
+  margin: 0;
+  padding: var(--amz-space-sm) 0;
+}

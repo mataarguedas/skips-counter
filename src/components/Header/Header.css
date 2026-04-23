@@ -1,0 +1,81 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* ── Top bar ── */
+.header__top {
+  background: var(--amz-navy);
+  height: var(--amz-header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--amz-space-lg);
+}
+
+.header__logo {
+  font-size: 20px;
+  font-weight: var(--amz-font-weight-bold);
+  font-family: var(--amz-font-family);
+  line-height: 1;
+  user-select: none;
+}
+
+.header__logo-agi {
+  color: #ffffff;
+}
+
+.header__logo-suffix {
+  color: var(--amz-orange);
+}
+
+.header__user {
+  display: flex;
+  align-items: center;
+}
+
+.header__user-name {
+  color: #ffffff;
+  font-size: 13px;
+  font-family: var(--amz-font-family);
+}
+
+.header__user-divider {
+  display: inline-block;
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 0 10px;
+}
+
+.header__signout {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #ffffff;
+  font-size: 13px;
+  font-family: var(--amz-font-family);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.header__signout:hover {
+  text-decoration: underline;
+}
+
+/* ── Bottom bar ── */
+.header__sub {
+  background: var(--amz-navy-light);
+  height: var(--amz-subnav-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--amz-space-lg);
+}
+
+.header__sub-label {
+  color: #ffffff;
+  font-size: 13px;
+  font-family: var(--amz-font-family);
+}

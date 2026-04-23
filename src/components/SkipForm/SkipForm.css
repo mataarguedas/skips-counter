@@ -1,0 +1,160 @@
+.skip-form-card {
+  background: var(--amz-bg-card);
+  box-shadow: var(--amz-shadow-card);
+  border-radius: var(--amz-radius-md);
+  padding: var(--amz-space-lg);
+}
+
+.skip-form-card__heading {
+  margin: 0 0 var(--amz-space-2xl);
+  font-size: var(--amz-font-size-lg);
+  font-weight: var(--amz-font-weight-bold);
+  color: var(--amz-text-primary);
+  font-family: var(--amz-font-family);
+}
+
+/* ── Field group ── */
+.skip-form__field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--amz-space-lg);
+}
+
+.skip-form__label {
+  font-size: 13px;
+  font-weight: var(--amz-font-weight-medium);
+  color: var(--amz-text-primary);
+  margin-bottom: 4px;
+  font-family: var(--amz-font-family);
+}
+
+/* ── Shared input/select styles ── */
+.skip-form__input,
+.skip-form__select {
+  width: 100%;
+  height: 32px;
+  border: 1px solid var(--amz-border);
+  border-radius: var(--amz-radius-sm);
+  font-size: var(--amz-font-size-base);
+  font-family: var(--amz-font-family);
+  color: var(--amz-text-primary);
+  background: var(--amz-bg-card);
+  padding: 0 var(--amz-space-sm);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.skip-form__input:focus,
+.skip-form__select:focus {
+  border-color: var(--amz-orange);
+  outline: 2px solid var(--amz-orange);
+  outline-offset: 0;
+}
+
+.skip-form__input--error,
+.skip-form__select--error {
+  border-color: var(--amz-deal-red);
+}
+
+.skip-form__input--error:focus,
+.skip-form__select--error:focus {
+  border-color: var(--amz-deal-red);
+  outline: 2px solid var(--amz-deal-red);
+  outline-offset: 0;
+}
+
+/* ── Error message ── */
+.skip-form__error {
+  margin-top: 4px;
+  font-size: var(--amz-font-size-sm);
+  color: var(--amz-deal-red);
+  font-family: var(--amz-font-family);
+}
+
+/* ── Two-column row for date + time ── */
+.skip-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--amz-space-lg);
+  margin-bottom: var(--amz-space-lg);
+}
+
+.skip-form__row .skip-form__field {
+  margin-bottom: 0;
+}
+
+/* ── Two-column row for utterances + skips ── */
+.skip-form__counts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--amz-space-lg);
+  margin-bottom: var(--amz-space-lg);
+}
+
+.skip-form__counts-row .skip-form__field {
+  margin-bottom: 0;
+}
+
+/* ── Submit button — Amazon primary yellow ── */
+.skip-form__submit {
+  width: 100%;
+  height: 32px;
+  background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+  border: 1px solid var(--amz-btn-primary-border);
+  border-radius: var(--amz-radius-pill);
+  font-size: var(--amz-font-size-base);
+  font-weight: var(--amz-font-weight-bold);
+  font-family: var(--amz-font-family);
+  color: var(--amz-text-primary);
+  cursor: pointer;
+  transition: background 0.15s ease;
+  margin-top: var(--amz-space-sm);
+}
+
+.skip-form__submit:hover {
+  background: linear-gradient(to bottom, #f5d78e, #eeb933);
+}
+
+.skip-form__submit:active {
+  background: linear-gradient(to bottom, #eeb933, #e5a800);
+}
+
+.skip-form__submit:disabled {
+  cursor: default;
+  opacity: 0.75;
+}
+
+.skip-form__submit:disabled:hover {
+  background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+}
+
+@keyframes skip-form-rotate {
+  to { transform: rotate(360deg); }
+}
+
+.skip-form__spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--amz-border);
+  border-top-color: var(--amz-orange);
+  border-radius: 50%;
+  animation: skip-form-rotate 0.7s linear infinite;
+  vertical-align: middle;
+}
+
+.skip-form__submit-error {
+  margin-top: var(--amz-space-sm);
+  font-size: 13px;
+  color: var(--amz-deal-red);
+  font-family: var(--amz-font-family);
+}
+
+/* ── Responsive: stack 2-col grids on narrow screens ── */
+@media (max-width: 480px) {
+  .skip-form__row,
+  .skip-form__counts-row {
+    grid-template-columns: 1fr;
+  }
+}

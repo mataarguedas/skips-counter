@@ -1,0 +1,24 @@
+.success-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--amz-space-sm);
+  background: #007600;
+  color: #ffffff;
+  font-size: var(--amz-font-size-base);
+  font-family: var(--amz-font-family);
+  padding: 10px var(--amz-space-lg);
+  border-radius: var(--amz-radius-sm);
+  margin-bottom: var(--amz-space-lg);
+  animation: banner-fade-in 0.2s ease forwards;
+}
+
+.success-banner__check {
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+@keyframes banner-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

@@ -1,0 +1,28 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--amz-bg-page);
+  font-family: var(--amz-font-family);
+  color: var(--amz-text-primary);
+}
+
+#root {
+  background: var(--amz-bg-page);
+  min-height: 100svh;
+}
+
+/* ── Form page wrapper ── */
+.form-wrapper {
+  max-width: 600px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+@media (max-width: 480px) {
+  .form-wrapper {
+    padding: 0 8px;
+  }
+}
