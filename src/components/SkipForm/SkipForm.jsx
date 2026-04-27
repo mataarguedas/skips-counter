@@ -6,7 +6,7 @@ import { MANAGERS } from '../../config/managers'
 import { submitSkipEvent, checkDuplicateLocally } from '../../services/appsScriptService'
 import './SkipForm.css'
 
-const AREAS = ['EN_US', 'ES_US', 'ES_MX', 'ES_ES', 'PT_BR']
+const locales = ['EN_US', 'ES_US', 'ES_MX', 'ES_ES', 'PT_BR']
 
 const SKIP_REASONS = [
   'Conventions are missing',
@@ -110,7 +110,7 @@ export default function SkipForm({ onSessionEntry }) {
       reset({
         manager: data.manager,
         username: data.username,
-        area: data.area,
+        local: data.local,
         date: format(new Date(), 'yyyy-MM-dd'),
         time: format(new Date(), 'HH:mm'),
         utterances: '',
@@ -176,23 +176,23 @@ export default function SkipForm({ onSessionEntry }) {
           )}
         </div>
 
-        {/* ── Area ── */}
+        {/* ── local ── */}
         <div className="skip-form__field">
-          <label className="skip-form__label" htmlFor="area">
-            Area
+          <label className="skip-form__label" htmlFor="local">
+            Local
           </label>
           <select
-            id="area"
-            className={`skip-form__select${errors.area ? ' skip-form__select--error' : ''}`}
-            {...register('area', { required: 'Please select your area.' })}
+            id="local"
+            className={`skip-form__select${errors.local ? ' skip-form__select--error' : ''}`}
+            {...register('local', { required: 'Please select your local.' })}
           >
-            <option value="" disabled>Select your area...</option>
-            {AREAS.map((a) => (
+            <option value="" disabled>Select your local...</option>
+            {locales.map((a) => (
               <option key={a} value={a}>{a}</option>
             ))}
           </select>
-          {errors.area && (
-            <span className="skip-form__error">{errors.area.message}</span>
+          {errors.local && (
+            <span className="skip-form__error">{errors.local.message}</span>
           )}
         </div>
 
