@@ -11,7 +11,6 @@ const MAX_VISIBLE = 5
 export default function SessionSummary({ entries }) {
   const totalSubmissions = entries.length
   const totalUtterances = entries.reduce((s, e) => s + e.utterances, 0)
-  const totalSkips = entries.reduce((s, e) => s + e.skips, 0)
 
   const visible = entries.slice(0, MAX_VISIBLE)
   const overflow = entries.length - MAX_VISIBLE
@@ -28,15 +27,11 @@ export default function SessionSummary({ entries }) {
           <div className="session-summary__stats">
             <div className="session-summary__stat">
               <span className="session-summary__stat-value">{totalSubmissions}</span>
-              <span className="session-summary__stat-label">Submissions</span>
+              <span className="session-summary__stat-label">Skips</span>
             </div>
             <div className="session-summary__stat">
               <span className="session-summary__stat-value">{totalUtterances}</span>
               <span className="session-summary__stat-label">Utterances</span>
-            </div>
-            <div className="session-summary__stat">
-              <span className="session-summary__stat-value">{totalSkips}</span>
-              <span className="session-summary__stat-label">Skips</span>
             </div>
           </div>
 
