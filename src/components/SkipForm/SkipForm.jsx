@@ -3,15 +3,7 @@ import { useForm } from 'react-hook-form'
 import { format } from 'date-fns'
 import SuccessBanner from '../SuccessBanner/SuccessBanner'
 import { MANAGERS } from '../../config/managers'
-import { useAuth } from '../../context/AuthContext'
-import {
-  checkDuplicateEntry,
-  ensureTabExists,
-  ensureHeaderRow,
-  formatTabOnFirstUse,
-  appendSkipRow,
-  upsertTotalsRow,
-} from '../../services/sheetsService'
+import { submitSkipEvent, checkDuplicateLocally } from '../../services/appsScriptService'
 import './SkipForm.css'
 
 const AREAS = ['EN_US', 'ES_US', 'ES_MX', 'ES_ES', 'PT_BR']
@@ -33,14 +25,15 @@ const currentTime = format(new Date(), 'HH:mm')
 /**
  * SkipForm — Amazon-style card form for reporting a skip event.
  *
- * Uses react-hook-form for state and validation. On valid submit the
- * form data is logged to the console; Sheets API wiring comes later.
+ * Submits via the manager's Apps Script Web App (no OAuth required).
+ * Duplicate detection runs client-side against in-session entries.
  */
 export default function SkipForm({ onSessionEntry }) {
-  const { accessToken, logout } = useAuth()
   const [submitted, setSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState(null)
+  // Local mirror of submitted entries — used for client-side duplicate detection.
+  const [sessionEntries, setSessionEntries] = useState([])
 
   const {
     register,
@@ -64,7 +57,7 @@ export default function SkipForm({ onSessionEntry }) {
     setValue('username', '')
   }, [selectedManagerId, setValue])
 
-  // Auto-hide the banner after 4 seconds
+  // Auto-hide the success banner after 4 seconds.
   useEffect(() => {
     if (!submitted) return
     const timer = setTimeout(() => setSubmitted(false), 4000)
@@ -76,44 +69,43 @@ export default function SkipForm({ onSessionEntry }) {
     setSubmitError(null)
 
     try {
-      const manager = MANAGERS.find((m) => m.id === data.manager)
-      const tabName = data.username.trim()
-      const { spreadsheetId } = manager
-
-      const isDuplicate = await checkDuplicateEntry(
-        accessToken, spreadsheetId, tabName,
-        data.date, data.time, data.username.trim(),
+      // Duplicate check (client-side, within the current session).
+      const isDuplicate = checkDuplicateLocally(
+        sessionEntries,
+        data.date,
+        data.time,
+        data.username.trim(),
       )
       if (isDuplicate) {
         setSubmitError(
-          'A skip event for this username at this exact time has already been recorded. If this is a new skip, adjust the time and resubmit.'
+          'A skip event for this username at this exact time has already been recorded this session. Adjust the time if this is a new skip.',
         )
         return
       }
 
-      await ensureTabExists(accessToken, spreadsheetId, tabName)
-      const wasNew = await ensureHeaderRow(accessToken, spreadsheetId, tabName)
-      if (wasNew) {
-        await formatTabOnFirstUse(accessToken, spreadsheetId, tabName)
-      }
-      await appendSkipRow(accessToken, spreadsheetId, tabName, {
+      // Submit to the manager's Apps Script Web App.
+      const manager = MANAGERS.find((m) => m.id === data.manager)
+      await submitSkipEvent(manager.scriptUrl, {
         date: data.date,
         time: data.time,
         managerName: manager.displayName,
         username: data.username.trim(),
-        area: data.area,
         utterances: Number(data.utterances),
         skips: 1,
         reason: data.reason || '',
       })
-      await upsertTotalsRow(accessToken, spreadsheetId, tabName, data.date)
 
-      onSessionEntry({
+      // Record locally for duplicate detection and session summary.
+      const entry = {
+        date: data.date,
         time: data.time,
+        username: data.username.trim(),
         utterances: Number(data.utterances),
         skips: 1,
         reason: data.reason || '',
-      })
+      }
+      setSessionEntries((prev) => [entry, ...prev])
+      onSessionEntry(entry)
 
       reset({
         manager: data.manager,
@@ -126,14 +118,9 @@ export default function SkipForm({ onSessionEntry }) {
       })
       setSubmitted(true)
     } catch (error) {
-      if (error.message.includes('401')) {
-        logout()
-        setSubmitError('Your session has expired. Please sign in again to continue.')
-      } else {
-        setSubmitError(
-          `Failed to record skip. Please check your connection and try again. (${error.message})`
-        )
-      }
+      setSubmitError(
+        `Failed to record skip. Please check your connection and try again. (${error.message})`,
+      )
     } finally {
       setIsSubmitting(false)
     }

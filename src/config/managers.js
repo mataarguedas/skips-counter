@@ -3,7 +3,7 @@ export const MANAGERS = [
   {
     id: 'rojasroy',
     displayName: 'rojasroy',
-    spreadsheetId: '1BBANrfMxoQZVUVpSzBo-ilnF5inoasYk_2C159Gf3kU',
+    scriptUrl: 'https://script.google.com/macros/s/AKfycbxNNt5An9Xl6e2OtZNCDJmPq2Rn01QzUd09-x6D1581KH3zvNYJxm4Yrs_z_6tvF_L38w/exec',
     das: [
       'alewgut',
       'moralons',
@@ -33,7 +33,7 @@ export const MANAGERS = [
   {
     id: 'mzfer',
     displayName: 'mzfer',
-    spreadsheetId: '1PXPtjM4jkGfLdsA9vgh7Z-C2SmrO3POixmSMeg-dD4I',
+    scriptUrl: 'https://script.google.com/macros/s/AKfycbwyo6qNY6MgCmORJ3DD7UGQZhXlTvj2ZibbrBHbLWKbRVmF9YJvOY6-XUhLzH2Nst42/exec',
     das: [
       'orteest',
       'calderf',
@@ -45,7 +45,7 @@ export const MANAGERS = [
   {
     id: 'gimanny',
     displayName: 'gimanny',
-    spreadsheetId: '1TODQg7UmxQKo5S0rvwokpOoFVVv7BStlsUdUnsPqD-Q',
+    scriptUrl: 'https://script.google.com/macros/s/AKfycbzOpDgsjfUl1wkSg__QWsqY7IJ9HCMvCX3Rp1UtAdLN7u8veu_OPqWrAiIuX-B0nG95/exec',
     das: [
       'Rojaslal',
       'alxacam',
